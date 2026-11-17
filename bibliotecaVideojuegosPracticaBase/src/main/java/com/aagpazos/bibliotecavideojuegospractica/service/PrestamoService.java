@@ -19,8 +19,8 @@ import java.util.Set;
 @Service
 public class PrestamoService {
     final int MAX_PRESTAMOS_ABIERTOS = 3;
-    final int PLAZO_NOVEDAD_DIAS = 3;
-    final int PLAZO_NORMAL_DIAS = 7;
+    final int PLAZO_NOVEDAD_DIAS = 7;
+    final int PLAZO_NORMAL_DIAS = 15;
     final double MULTA_POR_DIA = 0.50;
     private static final Set<String> ESTADOS = Set.of("EN_PLAZO", "VENCIDO", "DEVUELTO", "ABIERTO");
 
