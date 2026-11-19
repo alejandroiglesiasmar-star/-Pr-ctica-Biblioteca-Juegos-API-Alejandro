@@ -17,7 +17,7 @@ public class SwaggerConfig {
                         .version("1.0")
                         .description("API REST de la biblioteca de videojuegos GameVault")
                         .contact(new Contact()
-                                .name("Tu Nombre")
-                                .email("tu.email@ejemplo.com")));
+                                .name("Alejandro Iglesias Martín")
+                                .email("alejandroiglesiasmar@gmail.com")));
     }
 }
