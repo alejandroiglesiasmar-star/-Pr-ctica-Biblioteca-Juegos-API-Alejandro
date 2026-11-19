@@ -1,0 +1,23 @@
+info:
+  name: Regla negocio 422
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: http://localhost:8080/api/prestamos
+  body:
+    type: json
+    data: |-
+      {
+        "idSocio": 6,
+        "idCopia": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

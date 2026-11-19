@@ -1,0 +1,20 @@
+info:
+  name: Filtrar vencidos
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://localhost:8080/api/prestamos?estado=VENCIDO
+  params:
+    - name: estado
+      value: VENCIDO
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

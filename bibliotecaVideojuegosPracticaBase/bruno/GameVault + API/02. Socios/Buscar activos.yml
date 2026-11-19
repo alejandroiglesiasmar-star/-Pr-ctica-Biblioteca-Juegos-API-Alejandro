@@ -1,0 +1,20 @@
+info:
+  name: "Buscar activos "
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: http://localhost:8080/api/socios?activo=true
+  params:
+    - name: activo
+      value: "true"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

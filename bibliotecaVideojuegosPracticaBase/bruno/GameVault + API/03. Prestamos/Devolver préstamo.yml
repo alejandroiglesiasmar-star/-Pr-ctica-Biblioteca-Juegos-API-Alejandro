@@ -1,0 +1,22 @@
+info:
+  name: Devolver préstamo
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:8080/api/prestamos/1/devolucion
+  body:
+    type: json
+    data: |-
+      {
+        "copiaDañada": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
