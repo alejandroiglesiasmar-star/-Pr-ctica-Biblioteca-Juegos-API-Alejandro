@@ -165,8 +165,20 @@ public class SociosRepository {
 
     //Metodo auxiliar para mapear
     private SocioDTO mapear(ResultSet rs) throws SQLException {
-        LocalDate fechaNacimiento = rs.getDate("fecha_nacimiento").toLocalDate();
-        int edad = LocalDate.now().getYear() - fechaNacimiento.getYear();
+        java.sql.Date fechaNacSql = rs.getDate("fecha_nacimiento");
+        java.sql.Date fechaAltaSql = rs.getDate("fecha_alta");
+
+        LocalDate fechaNacimiento = (fechaNacSql != null) ? fechaNacSql.toLocalDate() : null;
+        LocalDate fechaAlta = (fechaAltaSql != null) ? fechaAltaSql.toLocalDate() : null;
+
+        int edad = 0;
+        if (fechaNacimiento != null) {
+            edad = LocalDate.now().getYear() - fechaNacimiento.getYear();
+            // Ajuste simple por si todavía no ha cumplido años este año
+            if (fechaNacimiento.plusYears(edad).isAfter(LocalDate.now())) {
+                edad--;
+            }
+        }
 
         return new SocioDTO(
                 rs.getInt("id"),
@@ -174,10 +186,11 @@ public class SociosRepository {
                 rs.getString("apellidos"),
                 rs.getString("email"),
                 fechaNacimiento,
-                rs.getDate("fecha_alta").toLocalDate(),
+                fechaAlta,
                 rs.getBoolean("activo"),
                 edad,
-                rs.getInt("prestamos_abiertos"));
+                rs.getInt("prestamos_abiertos")
+        );
     }
 
     // Metodo auxiliar para setar los param
